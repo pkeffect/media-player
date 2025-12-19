@@ -1,5 +1,7 @@
 # Internode Media Player
 
+![open Chess](./images/image-2025-12-18-192810.png)
+
 **Internode** is a professional-grade, browser-based media workstation designed for high-fidelity audio playback, precision video analysis, and persistent library management. Built entirely on modern Web Standards, it leverages WASM for advanced subtitle rendering and the Web Audio API for mastering-grade equalization.
 
 ![Version](https://img.shields.io/badge/version-9.2.0-red)
