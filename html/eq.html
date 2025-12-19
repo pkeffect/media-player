@@ -1,0 +1,88 @@
+<!-- START OF FILE html/eq.html -->
+<!-- EQ MODAL -->
+<div id="eq-modal" class="eq-realistic">
+    <div class="eq-housing">
+        <div class="eq-top-bar">
+            <div class="eq-title">STEREO MASTERING EQUALIZER</div>
+            <div class="eq-header-actions">
+                <canvas id="vu-meter" width="100" height="12"></canvas>
+                <select id="eq-presets" class="eq-preset-select">
+                    <option value="" disabled selected>PRESETS</option>
+                </select>
+                <button id="btn-eq-reset" class="eq-action-btn">RESET</button>
+                <button id="btn-close-eq">×</button>
+            </div>
+        </div>
+        <div class="eq-body">
+            <!-- Input / Pre-Amp -->
+            <div class="eq-controls-left">
+                <div class="switch-group">
+                    <button id="btn-bypass" class="eq-switch">BYPASS</button>
+                    <label>EQ DEFEAT</label>
+                </div>
+                <div class="knob-group">
+                    <div class="knob-wrapper">
+                        <div class="knob" data-param="gain-left" data-channel="left" data-rotation="0"></div>
+                        <label>L INPUT</label>
+                    </div>
+                    <div class="knob-wrapper">
+                        <div class="knob" data-param="gain-right" data-channel="right" data-rotation="0"></div>
+                        <label>R INPUT</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left Channel Bands -->
+            <div class="eq-channel" id="eq-left">
+                <div class="ch-label">LEFT CHANNEL</div>
+                <div class="sliders-row">
+                    <div class="slider-col"><div class="slider-track" data-channel="left" data-band="25"><div class="slider-handle"></div></div><div class="freq-label">25</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="left" data-band="40"><div class="slider-handle"></div></div><div class="freq-label">40</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="left" data-band="63"><div class="slider-handle"></div></div><div class="freq-label">63</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="left" data-band="100"><div class="slider-handle"></div></div><div class="freq-label">100</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="left" data-band="160"><div class="slider-handle"></div></div><div class="freq-label">160</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="left" data-band="250"><div class="slider-handle"></div></div><div class="freq-label">250</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="left" data-band="500"><div class="slider-handle"></div></div><div class="freq-label">500</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="left" data-band="1k"><div class="slider-handle"></div></div><div class="freq-label">1k</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="left" data-band="2k"><div class="slider-handle"></div></div><div class="freq-label">2k</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="left" data-band="4k"><div class="slider-handle"></div></div><div class="freq-label">4k</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="left" data-band="8k"><div class="slider-handle"></div></div><div class="freq-label">8k</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="left" data-band="16k"><div class="slider-handle"></div></div><div class="freq-label">16k</div></div>
+                </div>
+            </div>
+
+            <!-- Right Channel Bands -->
+            <div class="eq-channel" id="eq-right">
+                <div class="ch-label">RIGHT CHANNEL</div>
+                <div class="sliders-row">
+                    <div class="slider-col"><div class="slider-track" data-channel="right" data-band="25"><div class="slider-handle"></div></div><div class="freq-label">25</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="right" data-band="40"><div class="slider-handle"></div></div><div class="freq-label">40</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="right" data-band="63"><div class="slider-handle"></div></div><div class="freq-label">63</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="right" data-band="100"><div class="slider-handle"></div></div><div class="freq-label">100</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="right" data-band="160"><div class="slider-handle"></div></div><div class="freq-label">160</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="right" data-band="250"><div class="slider-handle"></div></div><div class="freq-label">250</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="right" data-band="500"><div class="slider-handle"></div></div><div class="freq-label">500</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="right" data-band="1k"><div class="slider-handle"></div></div><div class="freq-label">1k</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="right" data-band="2k"><div class="slider-handle"></div></div><div class="freq-label">2k</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="right" data-band="4k"><div class="slider-handle"></div></div><div class="freq-label">4k</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="right" data-band="8k"><div class="slider-handle"></div></div><div class="freq-label">8k</div></div>
+                    <div class="slider-col"><div class="slider-track" data-channel="right" data-band="16k"><div class="slider-handle"></div></div><div class="freq-label">16k</div></div>
+                </div>
+            </div>
+
+            <!-- Mastering Section (New) -->
+            <div class="eq-controls-right">
+                <div class="switch-group">
+                    <button id="btn-limiter" class="eq-switch active">LIMITER</button>
+                    <label>SAFETY</label>
+                </div>
+                <div class="knob-group">
+                    <div class="knob-wrapper">
+                        <div class="knob" id="knob-width" data-param="width" data-rotation="0"></div>
+                        <label>WIDTH</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

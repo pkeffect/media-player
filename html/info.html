@@ -1,0 +1,202 @@
+<!-- START OF FILE html/info.html -->
+<!-- info.html - Internode Media Player Documentation Modal -->
+<div id="readme-modal" class="modal-overlay full-screen-modal">
+    <div class="readme-card">
+        <div class="readme-header">
+            <div class="header-brand">
+                <svg class="brand-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+                <h2>Internode</h2>
+            </div>
+            <button id="btn-close-readme" class="icon-btn" title="Close">
+                <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+        </div>
+        <div class="readme-content">
+            <div class="readme-markdown">
+                <p class="lead">A professional-grade, browser-based media workstation featuring high-fidelity playback, precision audio shaping, video analysis tools, and persistent library management. Built entirely on modern Web Standards with full mobile and cross-browser support.</p>
+
+                <div class="feature-section">
+                    <h3><span class="section-icon">◈</span> Audio Engineering</h3>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <strong>12-Band Stereo Parametric EQ</strong>
+                            <span>Professional frequency shaping from 25Hz to 16kHz with independent Left/Right channel control using Web Audio API Biquad Filters.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Stereo Width Control</strong>
+                            <span>Mid/Side matrix processing for adjusting stereo field width from mono collapse to enhanced stereo spread.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Pre-Amp Input Gain</strong>
+                            <span>Per-channel input gain knobs (±12dB) to boost or attenuate signals before EQ processing.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Safety Limiter</strong>
+                            <span>Brickwall limiter prevents clipping and protects speakers from sudden volume spikes.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Real-Time VU Metering</strong>
+                            <span>Live stereo RMS level visualization for monitoring output levels.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>12 Genre Presets</strong>
+                            <span>Calibrated EQ curves: Flat, Rock, Pop, Jazz, Classical, Techno, Dance, Vocal, Live, Full Bass, Full Treble, and Soft.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>EQ Bypass</strong>
+                            <span>Instantly defeat all processing for A/B comparison against the original source.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Crossfade Transitions</strong>
+                            <span>Smooth audio fade-in/fade-out on play, pause, and track changes for seamless listening.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-section">
+                    <h3><span class="section-icon">◈</span> Video Analysis & Playback</h3>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <strong>Adjustment Filters</strong>
+                            <span>Non-destructive CSS filters for Brightness, Contrast, Saturation, and Hue. Essential for correcting dark or washed-out video streams.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>A-B Loop</strong>
+                            <span>Mark "Start" and "End" points on the timeline to loop specific segments for detailed analysis or learning.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Aspect Ratio Override</strong>
+                            <span>Force video to 16:9, 4:3, 21:9, 2.35:1, 1:1, or Fill to correct videos with bad metadata.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Frame-by-Frame Advance</strong>
+                            <span>Step through video one frame at a time (forward or backward) for precise navigation.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>HLS Live Streaming</strong>
+                            <span>Native Safari HLS support plus <code>hls.js</code> fallback for Chrome/Firefox. Adaptive bitrate with automatic quality switching.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Variable Speed</strong>
+                            <span>Pitch-corrected playback from 0.25× to 4.0× for analysis, learning, or rapid consumption.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Picture-in-Picture</strong>
+                            <span>Detach video to a floating window for system-wide multitasking.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Screenshot Capture</strong>
+                            <span>Save the current video frame as a PNG image with one click.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-section">
+                    <h3><span class="section-icon">◈</span> Advanced Subtitles</h3>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <strong>Format Support</strong>
+                            <span>Native support for <code>.SRT</code>, <code>.VTT</code>, and fully styled <code>.ASS</code> / <code>.SSA</code> anime subtitles via the integrated Octopus engine.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Customizable Appearance</strong>
+                            <span>Adjust font size, text color, and background opacity via the Caption Settings panel (right-click subtitle button).</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Persistence</strong>
+                            <span>Subtitle visibility state is saved and restored automatically across sessions.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Security</strong>
+                            <span>Text rendering uses secure methods to prevent XSS attacks in malicious subtitle files.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-section">
+                    <h3><span class="section-icon">◈</span> Library & Performance</h3>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <strong>Watched Folders</strong>
+                            <span>Set a local library folder that automatically loads on startup using the File System Access API.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Diff-Based Rendering</strong>
+                            <span>High-performance playlist engine updates only changed elements, allowing libraries of 1000+ items without UI freezing.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>IndexedDB Persistence</strong>
+                            <span>Stores playlists and metadata in the browser's structured database with debounced saves for reliability.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Thumbnail Batching</strong>
+                            <span>Background generation of video thumbnails uses a constrained queue to prevent browser lock-up.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Smart Resume</strong>
+                            <span>Automatically saves and restores playback position for every track across browser sessions.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Stream Validation</strong>
+                            <span>Network streams undergo protocol checks (HTTP/HTTPS) and connectivity testing (HEAD request) before addition.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-section">
+                    <h3><span class="section-icon">◈</span> Mobile & Interaction</h3>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <strong>Custom Keybindings</strong>
+                            <span>Complete keyboard remapping support via the Help menu. Settings are persistent.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Touch Gestures</strong>
+                            <span>Double-tap edges to seek, center to toggle UI. Swipe seeking on progress bar.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Playlist Management</strong>
+                            <span>Drag and drop reordering, context menu actions (Move Up/Down, Remove), and sorting by Name/Date/Size.</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Auto-Hide Controls</strong>
+                            <span>UI fades away during playback for distraction-free viewing.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-section">
+                    <h3><span class="section-icon">◈</span> Default Shortcuts</h3>
+                    <div class="shortcut-grid">
+                        <div class="shortcut-group">
+                            <div class="shortcut-category">Playback</div>
+                            <div class="key-row"><kbd>Space</kbd> <span class="desc">Play / Pause</span></div>
+                            <div class="key-row"><kbd>J</kbd> <span class="desc">Next Track</span></div>
+                            <div class="key-row"><kbd>K</kbd> <span class="desc">Previous Track</span></div>
+                            <div class="key-row"><kbd>←</kbd> <kbd>→</kbd> <span class="desc">Seek ±5 seconds</span></div>
+                            <div class="key-row"><kbd>,</kbd> <kbd>.</kbd> <span class="desc">Frame Step Back / Forward</span></div>
+                        </div>
+                        <div class="shortcut-group">
+                            <div class="shortcut-category">Tools & View</div>
+                            <div class="key-row"><kbd>↑</kbd> <kbd>↓</kbd> <span class="desc">Volume Up / Down</span></div>
+                            <div class="key-row"><kbd>[</kbd> <kbd>]</kbd> <span class="desc">Set Loop Start / End</span></div>
+                            <div class="key-row"><kbd>\</kbd> <span class="desc">Clear Loop</span></div>
+                            <div class="key-row"><kbd>F</kbd> <span class="desc">Toggle Fullscreen</span></div>
+                            <div class="key-row"><kbd>Esc</kbd> <span class="desc">Close Modals</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="readme-footer">
+                    <span class="version-tag">v9.0.0</span>
+                    <span class="separator">•</span>
+                    <span>Internode Media Player</span>
+                    <span class="separator">•</span>
+                    <span>PWA Ready</span>
+                    <span class="separator">•</span>
+                    <span>Mobile Optimized</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

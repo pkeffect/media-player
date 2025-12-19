@@ -1,0 +1,107 @@
+# VERSION: 1.0.0
+
+# ----------------------------------------------------------------------
+# 1. CROSS-ORIGIN ISOLATION (Required for ffmpeg.wasm)
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+    Header set Cross-Origin-Opener-Policy "same-origin"
+    Header set Cross-Origin-Embedder-Policy "require-corp"
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 2. COMPRESSION (GZIP/DEFLATE)
+# Drastically reduces load times for HTML, CSS, and JS
+# ----------------------------------------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE image/x-icon
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/manifest+json
+    AddOutputFilterByType DEFLATE application/wasm
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 3. MODERN MIME TYPES
+# Ensures browsers understand manifests, wasm, and ES modules
+# ----------------------------------------------------------------------
+<IfModule mod_mime.c>
+    AddType application/manifest+json .webmanifest
+    AddType application/manifest+json .json
+    AddType application/wasm .wasm
+    AddType text/javascript .js .mjs
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 4. SINGLE PAGE APPLICATION (SPA) ROUTING
+# Redirects all non-file requests to index.html so the JS router works
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # If the request is not for a real file or directory...
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # ...redirect to index.html
+    RewriteRule ^ index.html [QSA,L]
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 5. CACHING STRATEGIES (CRITICAL FOR PWA)
+# ----------------------------------------------------------------------
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images, Video, Audio - Cache for 1 year
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType video/mp4 "access plus 1 year"
+    
+    # Fonts - Cache for 1 year
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+
+    # CSS/JS - Cache for 1 month (assuming you use versioning/hashing)
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    
+    # HTML & Data - Cache briefly or not at all (so updates are seen)
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType application/json "access plus 0 seconds"
+    ExpiresByType application/manifest+json "access plus 0 seconds"
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 6. FORCE NO-CACHE FOR SERVICE WORKER
+# If sw.js gets cached, users will never get updates.
+# ----------------------------------------------------------------------
+<FilesMatch "^(sw|service-worker)\.js$">
+    <IfModule mod_headers.c>
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires 0
+    </IfModule>
+</FilesMatch>
+
+# ----------------------------------------------------------------------
+# 7. SECURITY HEADERS
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+    # Prevent clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+    # Prevent MIME-sniffing
+    Header set X-Content-Type-Options "nosniff"
+    # Force HTTPS (Optional - uncomment if you have SSL set up)
+    # Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>

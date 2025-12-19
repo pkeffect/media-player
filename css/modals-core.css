@@ -1,0 +1,181 @@
+/* VERSION: 2.0.0 */
+/* css/modals-core.css */
+/* Base styles for generic modals (Stream, Captions, Video, Keybinds) */
+/* Unified to match the premium styling of the Info/Readme modal */
+
+.modal-overlay {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.85); 
+    z-index: 90; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    opacity: 0; 
+    pointer-events: none; 
+    transition: opacity 0.25s ease;
+    backdrop-filter: blur(8px);
+}
+
+.modal-overlay.visible { 
+    opacity: 1; 
+    pointer-events: auto; 
+}
+
+/* Unified Card Style */
+.modal-content, .readme-card {
+    background: #121212;
+    border-radius: 16px;
+    box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 24px 80px rgba(0, 0, 0, 0.7),
+        0 8px 32px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    max-height: 90vh;
+    animation: modalSlideIn 0.25s ease-out;
+}
+
+/* Gradient Top Border Effect */
+.modal-content::before, .readme-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Header */
+.modal-header, .readme-header {
+    padding: 18px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.modal-header h3, .readme-header h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Content Body */
+.modal-body, .readme-content {
+    padding: 24px;
+    overflow-y: auto;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Input Fields */
+.modal-body input[type="text"] { 
+    background: #0a0a0a; 
+    border: 1px solid #333; 
+    color: #fff; 
+    padding: 10px 12px; 
+    border-radius: 6px; 
+    width: 100%;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+
+.modal-body input[type="text"]:focus {
+    border-color: var(--highlight);
+}
+
+/* Setting Rows */
+.setting-row { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 15px; 
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.setting-row:last-child {
+    border-bottom: none;
+}
+
+.setting-row label { 
+    color: #ccc; 
+    font-size: 0.9rem; 
+    min-width: 100px;
+}
+
+.setting-row input[type="range"] { 
+    flex: 1; 
+    cursor: pointer;
+}
+
+.setting-row input[type="color"] { 
+    border: none; 
+    width: 36px; 
+    height: 36px; 
+    padding: 0; 
+    background: none; 
+    cursor: pointer; 
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Footer / Actions */
+.modal-actions { 
+    padding: 16px 24px;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex; 
+    justify-content: flex-end; 
+    gap: 12px; 
+    position: relative;
+    z-index: 1;
+}
+
+.modal-actions button { 
+    background: rgba(255, 255, 255, 0.05); 
+    color: #eee; 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    padding: 8px 16px; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.modal-actions button:hover { 
+    background: rgba(255, 255, 255, 0.1); 
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* Animations */
+@keyframes modalSlideIn {
+    from { opacity: 0; transform: translateY(-20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Custom Scrollbar */
+.modal-body::-webkit-scrollbar, .readme-content::-webkit-scrollbar { width: 6px; }
+.modal-body::-webkit-scrollbar-track, .readme-content::-webkit-scrollbar-track { background: transparent; }
+.modal-body::-webkit-scrollbar-thumb, .readme-content::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 3px; }
+.modal-body::-webkit-scrollbar-thumb:hover, .readme-content::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }

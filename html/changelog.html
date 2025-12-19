@@ -1,0 +1,90 @@
+<!-- START OF FILE html/changelog.html -->
+<div id="changelog-modal" class="modal-overlay full-screen-modal">
+    <div class="readme-card">
+        <div class="readme-header">
+            <div class="header-brand">
+                <svg class="brand-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                <h2>Changelog</h2>
+            </div>
+            <button id="btn-close-changelog" class="icon-btn" title="Close">
+                <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+        </div>
+        <div class="readme-content">
+            <div class="readme-markdown">
+                
+                <div class="feature-section">
+                    <h3>Version 7.0.0 <span class="version-tag">LATEST</span></h3>
+                    <p>A massive update focusing on video analysis tools, architectural refactoring, performance optimizations, and user interface unification.</p>
+                    
+                    <div class="feature-grid" style="grid-template-columns: 1fr;">
+                        <div class="feature-item">
+                            <strong>Video Analysis Suite</strong>
+                            <ul>
+                                <li>Added <strong>Video Adjustment Filters</strong>: Real-time CSS controls for Brightness, Contrast, Saturation, and Hue via the new "Video" menu.</li>
+                                <li>Added <strong>A-B Loop</strong>: Set specific Start [A] and End [B] points to loop a segment. Includes shortcut keys <code>[</code>, <code>]</code>, and <code>\</code>.</li>
+                                <li>Added <strong>Aspect Ratio Overrides</strong>: Force video to 16:9, 4:3, 21:9, 2.35:1, 1:1, or Fill mode.</li>
+                                <li>Expanded <strong>Playback Speeds</strong>: Added 0.25x, 3.0x, and 4.0x options.</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-item">
+                            <strong>Advanced Subtitles</strong>
+                            <ul>
+                                <li><strong>ASS/SSA Support</strong>: Integrated <code>SubtitlesOctopus</code> (libass via WASM) for rendering advanced Anime subtitles with full styling and positioning.</li>
+                                <li><strong>Persistence</strong>: Subtitle visibility preference is now saved and restored across sessions.</li>
+                                <li><strong>Security</strong>: Switched SRT/VTT rendering from <code>innerHTML</code> to <code>textContent</code> to mitigate XSS risks.</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-item">
+                            <strong>User Interface & Experience</strong>
+                            <ul>
+                                <li><strong>Custom Keybindings</strong>: New editor to remap all keyboard shortcuts. Mappings are persistent.</li>
+                                <li><strong>Unified Modals</strong>: Refactored all modals (Stream, Captions, Info, Video, Keybinds) to share a consistent "Card" aesthetic.</li>
+                                <li><strong>Z-Index Management</strong>: Fixed alert toasts to always appear above all other layers (Z-Index 20000).</li>
+                                <li><strong>Visual Polish</strong>: Reduced progress bar thickness. Added visual "Center Pause Icon" on pause. Improved keyboard focus states.</li>
+                                <li><strong>Menu System</strong>: Split `index.html` into modular HTML widgets (`menubar.html`, `eq.html`, etc.) for better maintainability.</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-item">
+                            <strong>Performance & Reliability</strong>
+                            <ul>
+                                <li><strong>Diff-Based Rendering</strong>: Playlist now updates via DOM diffing instead of full rebuilds, preventing layout thrashing on large lists.</li>
+                                <li><strong>Search Debounce</strong>: Added 300ms debounce to playlist search input.</li>
+                                <li><strong>Batch Thumbnails</strong>: Limited concurrent thumbnail generation to 2 threads to prevent UI freezing.</li>
+                                <li><strong>Polyfills</strong>: Added `requestAnimationFrame` fallback for `requestVideoFrameCallback` to support Firefox/Safari.</li>
+                                <li><strong>Stream Validation</strong>: Added protocol whitelist (HTTP/HTTPS only) and HEAD request connectivity checks.</li>
+                                <li><strong>Logging</strong>: Centralized `Logger` class to standardize console output and user-facing error messages.</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-item">
+                            <strong>Playlist Features</strong>
+                            <ul>
+                                <li>Added context menu options: <strong>Move Up</strong>, <strong>Move Down</strong>, and <strong>Open Folder</strong> placeholder.</li>
+                                <li>Added Playlist Footer with version branding.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-section">
+                    <h3>Version 6.0.0</h3>
+                    <div class="feature-grid" style="grid-template-columns: 1fr;">
+                        <div class="feature-item">
+                            <strong>Watched Folder API</strong>
+                            <span>Added support for the File System Access API to automatically scan local folders on startup (Chrome/Edge only).</span>
+                        </div>
+                        <div class="feature-item">
+                            <strong>Audio Engineering</strong>
+                            <span>Introduced the 12-Band Stereo Parametric EQ with M/S processing, Input Gains, and visual metering.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

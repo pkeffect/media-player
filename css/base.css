@@ -1,0 +1,60 @@
+/* VERSION: 1.3.0 */
+/* CORE VARIABLES, RESET, AND LAYOUT */
+
+:root {
+    --bg-main: #0a0a0a;
+    --sidebar-bg: #0f0f0f;
+    --sidebar-border: #222;
+    --control-bg: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0));
+    --accent: #ffffff;
+    --accent-dim: #888;
+    --highlight: #e50914;
+    --error: #e53935;
+    --text-main: #eeeeee;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+html {
+    background-color: #000000; 
+}
+
+body {
+    background-color: var(--bg-main);
+    background-image: linear-gradient(to bottom, #0a0a0a, #050505);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-main);
+    height: 100dvh; 
+    width: 100vw;
+    overflow: hidden;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+#app-layout {
+    display: flex;
+    width: 100%;
+    flex: 1;
+    min-height: 0; 
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+}

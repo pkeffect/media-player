@@ -1,0 +1,305 @@
+/* VERSION: 2.0.0 */
+/* css/modal-readme.css */
+/* Modern, Sleek Readme Modal Styles */
+
+/* --- Modal Card Container --- */
+#readme-modal .readme-card {
+    background: #121212;
+    width: 760px;
+    max-width: 92vw;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 24px 80px rgba(0, 0, 0, 0.7),
+        0 8px 32px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Subtle gradient overlay for depth */
+#readme-modal .readme-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+    pointer-events: none;
+    border-radius: 16px 16px 0 0;
+}
+
+/* --- Header --- */
+#readme-modal .readme-header {
+    padding: 18px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    color: var(--highlight);
+    opacity: 0.9;
+}
+
+#readme-modal .readme-header h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: #fff;
+    margin: 0;
+}
+
+#readme-modal .readme-header .icon-btn {
+    opacity: 0.5;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+#readme-modal .readme-header .icon-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* --- Content Area --- */
+#readme-modal .readme-content {
+    padding: 28px 32px 32px;
+    overflow-y: auto;
+    color: #b0b0b0;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Custom Scrollbar */
+#readme-modal .readme-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+#readme-modal .readme-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#readme-modal .readme-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+#readme-modal .readme-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Lead Paragraph --- */
+.readme-markdown .lead {
+    font-size: 0.95rem;
+    color: #d0d0d0;
+    margin-bottom: 32px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    border-left: 3px solid var(--highlight);
+    line-height: 1.7;
+}
+
+/* --- Feature Sections --- */
+.feature-section {
+    margin-bottom: 28px;
+}
+
+.feature-section h3 {
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-icon {
+    color: var(--highlight);
+    font-size: 0.7rem;
+}
+
+/* --- Feature Grid --- */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.feature-item {
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.feature-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.feature-item strong {
+    display: block;
+    color: #e8e8e8;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.feature-item span {
+    font-size: 0.8rem;
+    color: #888;
+    line-height: 1.5;
+}
+
+.feature-item code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: 'SF Mono', 'Consolas', monospace;
+    font-size: 0.75rem;
+    color: #aaa;
+}
+
+/* --- Shortcut Grid --- */
+.shortcut-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.shortcut-group {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 16px 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.shortcut-category {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.key-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+}
+
+kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 24px;
+    padding: 0 8px;
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    font-family: 'SF Mono', 'Consolas', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #ddd;
+    box-shadow: 
+        0 2px 0 rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.key-row .desc {
+    font-size: 0.8rem;
+    color: #777;
+    margin-left: 4px;
+}
+
+/* --- Footer --- */
+.readme-footer {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 0.7rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.version-tag {
+    background: rgba(229, 9, 20, 0.15);
+    color: var(--highlight);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.separator {
+    opacity: 0.3;
+}
+
+/* --- Responsive --- */
+@media (max-width: 700px) {
+    #readme-modal .readme-card {
+        max-width: 96vw;
+        max-height: 92vh;
+        border-radius: 12px;
+    }
+
+    #readme-modal .readme-content {
+        padding: 20px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .shortcut-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-item {
+        padding: 12px 14px;
+    }
+}
+
+/* --- Animation on Open --- */
+#readme-modal.visible .readme-card {
+    animation: modalSlideIn 0.25s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

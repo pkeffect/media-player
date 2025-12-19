@@ -1,0 +1,93 @@
+/* VERSION: 2.1.0 */
+/* css/modal-keybinds.css */
+
+.keybind-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-height: 55vh;
+    overflow-y: auto;
+    padding-right: 8px;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 8px;
+    background: rgba(0,0,0,0.2);
+}
+
+.keybind-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s;
+}
+
+.keybind-row:last-child {
+    border-bottom: none;
+}
+
+.keybind-row:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.keybind-label {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Styled Key Button to match KBD tags */
+.keybind-input {
+    appearance: none;
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+    color: #eee;
+    font-family: 'SF Mono', 'Consolas', monospace;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    min-width: 100px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 600;
+    transition: all 0.1s;
+    user-select: none;
+}
+
+.keybind-input:hover {
+    background: linear-gradient(180deg, #333 0%, #222 100%);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.keybind-input:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+.keybind-input.recording {
+    background: var(--highlight);
+    color: #fff;
+    border-color: var(--highlight);
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+    animation: pulseRecording 1.5s infinite;
+}
+
+.danger-btn {
+    background: transparent !important;
+    border: 1px solid rgba(229, 57, 53, 0.5) !important;
+    color: #e57373 !important;
+}
+
+.danger-btn:hover {
+    background: rgba(229, 57, 53, 0.1) !important;
+    border-color: #e53935 !important;
+    color: #fff !important;
+}
+
+@keyframes pulseRecording {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}

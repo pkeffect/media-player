@@ -1,0 +1,23 @@
+<!-- START OF FILE html/playlist.html -->
+<!-- Playlist Sidebar -->
+<div id="playlist-sidebar">
+    <div id="sidebar-resizer"></div>
+    <div class="playlist-tools">
+        <input type="text" id="playlist-search" placeholder="Filter tracks...">
+        <div class="tool-buttons">
+            <button id="btn-shuffle" class="icon-btn small" title="Shuffle"><svg viewBox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg></button>
+            <button id="btn-loop" class="icon-btn small" title="Loop"><svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg><span id="loop-indicator" class="badge"></span></button>
+            
+            <button id="btn-open" class="icon-btn small" title="Add Files"><svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg></button>
+            <button id="btn-open-folder" class="icon-btn small" title="Add Folder"><svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg></button>
+            <button id="btn-export" class="icon-btn small" title="Export Playlist"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></button>
+            <button id="btn-import" class="icon-btn small" title="Import Playlist"><svg viewBox="0 0 24 24"><path d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z"/></svg></button>
+
+            <input type="file" id="file-input" multiple hidden>
+            <input type="file" id="folder-input" webkitdirectory directory multiple hidden>
+            <input type="file" id="import-input" accept=".json,.m3u,.m3u8" hidden>
+        </div>
+    </div>
+    <div id="playlist-items"></div>
+    <div class="playlist-footer">INTERNODE MEDIA PLAYER v6.6.0</div>
+</div>

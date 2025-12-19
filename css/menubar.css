@@ -1,0 +1,156 @@
+/* VERSION: 2.0.0 */
+/* css/menubar.css */
+/* Adapted Menu Bar System for Internode Theme */
+
+/* --- Generic Bar Styles --- */
+.bar {
+    background-color: #111; /* Slightly lighter than pure black bg */
+    border-bottom: 1px solid var(--sidebar-border);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    user-select: none;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    color: var(--text-main);
+    z-index: 100;
+    position: relative;
+    width: 100%;
+    font-family: inherit;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+/* FADE OUT STATE */
+.bar.fade-out {
+    opacity: 0;
+    pointer-events: none; /* Prevent clicking when hidden */
+}
+/* Hide open dropdowns when bar fades to prevent floating ghosts */
+.bar.fade-out .dropdown-menu {
+    display: none;
+}
+
+/* --- Top Menubar Specifics --- */
+.top-menubar > ul {
+    display: flex; 
+    align-items: center; 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    height: 100%; 
+    width: 100%;
+}
+
+.top-menubar > ul > li {
+    position: relative; 
+    padding: 0 15px; 
+    height: 100%; 
+    display: flex; 
+    align-items: center; 
+    cursor: pointer; 
+    flex-shrink: 0;
+    transition: background 0.1s;
+    /* TOUCH FIX: Ensure taps register */
+    touch-action: manipulation;
+}
+
+/* Interaction States */
+.top-menubar > ul > li:hover,
+.top-menubar > ul > li.is-open {
+    background-color: #222;
+    color: #fff;
+}
+
+/* --- Dropdown Menus --- */
+/* DEFAULT: Hidden */
+.dropdown-menu {
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    background-color: var(--sidebar-bg); 
+    border: 1px solid var(--sidebar-border); 
+    list-style: none; 
+    margin: 0; 
+    padding: 5px 0; 
+    min-width: 200px; 
+    z-index: 1000; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+/* DESKTOP HOVER: Still works for mouse users */
+@media (hover: hover) {
+    .top-menubar > ul > li:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+/* MOBILE/TOUCH JS TOGGLE: Works via class */
+.top-menubar > ul > li.is-open .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li { 
+    padding: 10px 15px; /* Increased padding for touch targets */
+    white-space: nowrap; 
+    color: #ccc;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-menu li:hover,
+.dropdown-menu li:active { 
+    background-color: var(--highlight); 
+    color: #fff;
+}
+
+/* Divider lines in menus */
+.menu-divider {
+    height: 1px;
+    background: var(--sidebar-border);
+    margin: 4px 0;
+    padding: 0 !important;
+    pointer-events: none;
+}
+
+/* Shortcut text style */
+.shortcut-text {
+    font-size: 0.7rem;
+    color: #666;
+    margin-left: 15px;
+}
+.dropdown-menu li:hover .shortcut-text,
+.dropdown-menu li:active .shortcut-text {
+    color: rgba(255,255,255,0.7);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .top-menubar {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Ensure dropdowns don't go off-screen on mobile */
+    .dropdown-menu {
+        position: fixed; /* Fixed relative to viewport on mobile */
+        top: 35px; /* Height of bar */
+        left: 0;
+        right: 0;
+        width: 100%;
+        border-left: none;
+        border-right: none;
+        background: rgba(15, 15, 15, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+    }
+
+    /* Hide shortcut text on mobile to save space */
+    .shortcut-text {
+        display: none;
+    }
+}

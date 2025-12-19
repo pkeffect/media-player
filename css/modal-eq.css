@@ -1,0 +1,115 @@
+/* VERSION: 1.3.0 */
+/* css/modal-eq.css */
+/* Realistic EQ Widget Styles */
+
+#eq-modal.eq-realistic {
+    position: fixed; 
+    top: 50%; left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 9999; 
+    display: none; 
+    font-family: inherit; 
+    transform-origin: center center;
+}
+
+#eq-modal.eq-realistic.visible { 
+    display: block; 
+}
+
+.eq-housing { background: var(--sidebar-bg); border: 1px solid var(--sidebar-border); border-radius: 6px; box-shadow: 0 20px 50px rgba(0,0,0,0.9); width: 880px; color: var(--text-main); overflow: hidden; }
+.eq-top-bar { background: #1a1a1a; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--sidebar-border); }
+.eq-title { color: var(--accent); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; }
+.eq-header-actions { display: flex; align-items: center; gap: 15px; }
+#btn-close-eq { background: none; border: none; color: var(--text-main); font-size: 1.5rem; cursor: pointer; line-height: 1; padding: 15px; margin: -15px; position: relative; z-index: 100; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+#btn-close-eq:hover { color: var(--highlight); }
+.eq-action-btn { background: transparent; border: 1px solid var(--sidebar-border); color: var(--accent-dim); padding: 4px 8px; font-size: 0.75rem; border-radius: 4px; cursor: pointer; transition: all 0.2s; min-height: 44px; /* Touch target */ }
+.eq-action-btn:hover { border-color: var(--highlight); color: var(--highlight); }
+
+/* VU METER */
+#vu-meter { background: #111; border-radius: 2px; border: 1px solid #333; margin-right: 10px; }
+
+.eq-body { display: flex; background: var(--bg-main); padding: 20px; gap: 20px; }
+
+/* Control Columns */
+.eq-controls-left, .eq-controls-right { display: flex; flex-direction: column; gap: 30px; width: 90px; padding-top: 10px; }
+.eq-controls-left { border-right: 1px solid var(--sidebar-border); padding-right: 15px; }
+.eq-controls-right { border-left: 1px solid var(--sidebar-border); padding-left: 15px; }
+
+.eq-switch { width: 100%; padding: 8px 0; background: #1a1a1a; border: 1px solid var(--sidebar-border); color: var(--text-main); font-weight: 500; cursor: pointer; border-radius: 4px; transition: all 0.2s; font-size: 0.8rem; min-height: 44px; }
+.eq-switch.active { background: var(--highlight); color: #fff; border-color: var(--highlight); }
+.switch-group label, .knob-wrapper label { display: block; text-align: center; color: var(--accent-dim); font-size: 0.7rem; margin-top: 8px; font-weight: 500; }
+.knob-group { display: flex; flex-direction: column; gap: 20px; align-items: center; }
+
+/* Knobs */
+.knob { width: 40px; height: 40px; background: #1a1a1a; border-radius: 50%; border: 2px solid var(--sidebar-border); position: relative; cursor: grab; box-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+.knob::after { content: ''; position: absolute; top: 4px; left: 50%; width: 2px; height: 10px; background: var(--highlight); transform: translateX(-50%); }
+
+.eq-channel { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.ch-label { text-align: center; color: var(--accent-dim); font-size: 0.75rem; letter-spacing: 1px; border-bottom: 1px solid var(--sidebar-border); padding-bottom: 8px; font-weight: 600; }
+.sliders-row { display: flex; justify-content: space-between; height: 220px; padding-top: 10px; }
+.slider-col { display: flex; flex-direction: column; align-items: center; height: 100%; width: 20px; position: relative; }
+.slider-track { flex: 1; width: 4px; background: #1a1a1a; border-radius: 2px; position: relative; cursor: pointer; }
+/* Increased touch area for sliders using pseudo-element */
+.slider-track::before { content: ''; position: absolute; left: -15px; right: -15px; top: 0; bottom: 0; z-index: 2; }
+.slider-handle { position: absolute; bottom: 50%; left: 50%; width: 12px; height: 12px; background: var(--highlight); transform: translate(-50%, 50%); border-radius: 50%; box-shadow: 0 0 5px rgba(0,0,0,0.5); cursor: grab; transition: transform 0.1s; pointer-events: none; /* Let track handle events */ }
+.slider-handle:hover, .slider-handle.active-drag { transform: translate(-50%, 50%) scale(1.2); }
+.freq-label { margin-top: 8px; color: var(--accent-dim); font-size: 0.65rem; writing-mode: vertical-rl; transform: rotate(180deg); }
+
+/* --- Mobile Handling --- */
+/* Landscape Mode: Fullscreen usage */
+@media (max-width: 900px) and (orientation: landscape) {
+    #eq-modal.eq-realistic.visible {
+        width: 100vw; height: 100vh;
+        top: 0; left: 0;
+        transform: none; border-radius: 0; display: flex; flex-direction: column;
+    }
+    .eq-housing { width: 100%; height: 100%; border: none; border-radius: 0; display: flex; flex-direction: column; }
+    .eq-body { flex: 1; overflow: hidden; padding: 5px 10px; gap: 5px; }
+    .sliders-row { height: 150px; }
+    .eq-controls-left, .eq-controls-right { width: 70px; gap: 15px; }
+    .knob { width: 32px; height: 32px; }
+}
+
+/* Portrait Mode Fix: Scrollable Container instead of microscopic scaling */
+@media (max-width: 768px) and (orientation: portrait) {
+    #eq-modal.eq-realistic:not(.force-landscape).visible { 
+        transform: translate(-50%, -50%); 
+        width: 95vw; 
+        max-height: 90vh;
+    }
+    .eq-housing {
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto; /* Enable scrolling */
+        display: flex;
+        flex-direction: column;
+    }
+    .eq-body {
+        flex-direction: column; /* Stack controls vertically */
+        padding: 10px;
+        gap: 15px;
+        overflow-y: auto;
+    }
+    .eq-controls-left, .eq-controls-right {
+        width: 100%;
+        flex-direction: row;
+        border: none;
+        padding: 0;
+        justify-content: space-around;
+        border-bottom: 1px solid #333;
+        padding-bottom: 15px;
+    }
+    .knob-group {
+        flex-direction: row;
+    }
+    .eq-channel {
+        border-bottom: 1px solid #333;
+        padding-bottom: 15px;
+    }
+    .sliders-row {
+        height: 180px; /* Reasonable height for touch */
+    }
+    .slider-col {
+        width: 100%; /* Distribute evenly */
+    }
+}

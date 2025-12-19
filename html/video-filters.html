@@ -1,0 +1,39 @@
+<!-- START OF FILE html/video-filters.html -->
+<div id="video-modal" class="modal-overlay">
+    <div class="modal-content" style="width: 380px;">
+        <div class="modal-header">
+            <h3>Video Adjustments</h3>
+        </div>
+        
+        <div class="modal-body">
+            <div class="setting-row">
+                <label for="vid-bright">Brightness</label>
+                <input type="range" id="vid-bright" min="0" max="200" value="100">
+                <span id="val-bright">100%</span>
+            </div>
+            
+            <div class="setting-row">
+                <label for="vid-contrast">Contrast</label>
+                <input type="range" id="vid-contrast" min="0" max="200" value="100">
+                <span id="val-contrast">100%</span>
+            </div>
+            
+            <div class="setting-row">
+                <label for="vid-sat">Saturation</label>
+                <input type="range" id="vid-sat" min="0" max="200" value="100">
+                <span id="val-sat">100%</span>
+            </div>
+            
+            <div class="setting-row">
+                <label for="vid-hue">Hue</label>
+                <input type="range" id="vid-hue" min="0" max="360" value="0">
+                <span id="val-hue">0°</span>
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button id="btn-video-reset" class="danger-btn">Reset</button>
+            <button id="btn-video-close">Close</button>
+        </div>
+    </div>
+</div>

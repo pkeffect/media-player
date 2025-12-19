@@ -1,0 +1,317 @@
+/* VERSION: 3.0.0 */
+/* PLAYER STAGE, VIDEO, AND CONTROLS */
+/* Mobile/Touch optimized */
+
+#player-stage {
+    position: relative;
+    flex: 1;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    min-width: 0;
+    min-height: 0;
+    /* Prevent iOS bounce/overscroll */
+    overscroll-behavior: contain;
+    /* Prevent double-tap zoom on iOS */
+    touch-action: manipulation;
+}
+
+#main-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: translateZ(0); 
+    will-change: transform;
+    /* iOS video fixes */
+    -webkit-playsinline: true;
+    /* Prevent context menu on long press */
+    -webkit-touch-callout: none;
+}
+
+/* Subtitles */
+#subtitle-overlay {
+    position: absolute; 
+    bottom: 80px; 
+    width: 100%; 
+    text-align: center; 
+    pointer-events: none; 
+    padding: 0 20px; 
+    z-index: 5;
+    
+    /* Default Accessibility Variables */
+    --sub-font-size: 1.5rem;
+    --sub-color: #ffffff;
+    --sub-bg-opacity: 0.6;
+}
+
+.subtitle-line {
+    background: rgba(0, 0, 0, var(--sub-bg-opacity));
+    color: var(--sub-color);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: var(--sub-font-size);
+    line-height: 1.4;
+    text-shadow: 0 1px 2px #000;
+    /* Security: Handle newlines safely without innerHTML <br> */
+    white-space: pre-wrap; 
+}
+
+/* Center Status Icon (Pause Overlay) */
+#center-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 160px; /* Doubled size */
+    height: 160px; /* Doubled size */
+    color: rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    backdrop-filter: blur(2px);
+}
+
+#center-icon.visible {
+    opacity: 1;
+    animation: icon-pulse 2s infinite ease-in-out;
+}
+
+@keyframes icon-pulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.7; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+#center-icon svg {
+    width: 50%;
+    height: 50%;
+    fill: currentColor;
+}
+
+/* Seek Animations */
+.seek-anim {
+    position: absolute; top: 50%; width: 100px; height: 100px; background: rgba(0,0,0,0.5); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 15;
+}
+.seek-anim.left { left: 10%; }
+.seek-anim.right { right: 10%; }
+.seek-anim.animate { opacity: 1; transform: scale(1.2); }
+.seek-anim svg { width: 40px; height: 40px; fill: currentColor; }
+
+/* Controls Container */
+.controls-wrapper {
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    padding: 0 20px 20px 20px; 
+    background: var(--control-bg); 
+    z-index: 10; 
+    opacity: 1; 
+    /* Transition opacity and visibility */
+    transition: opacity 0.3s ease, visibility 0.3s;
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+    max-width: 100%;
+    /* Ensure it is visible by default */
+    visibility: visible;
+}
+
+/* Progress Bar Container - Interaction Area */
+.progress-area {
+    position: relative; 
+    width: 100%; 
+    height: 20px; /* Interaction height (Hit Area) */
+    margin: -8px 0; /* Negative margin to maintain layout density */
+    cursor: pointer; 
+    /* Enable touch drag without page scroll */
+    touch-action: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Visual Track Background */
+.progress-bg {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: rgba(255,255,255,0.2); 
+    border-radius: 2px;
+    transition: height 0.1s;
+}
+
+/* Visual Fill (Red Bar) */
+.progress-fill { 
+    position: absolute; 
+    height: 3px; 
+    background: var(--highlight); 
+    width: 0%; 
+    border-radius: 2px; 
+    transition: height 0.1s;
+    z-index: 1;
+}
+
+/* Hover States: Thicken the bar slightly */
+.progress-area:hover .progress-bg,
+.progress-area:hover .progress-fill {
+    height: 5px;
+}
+
+/* Thumb Handle */
+.progress-thumb { 
+    position: absolute; 
+    width: 12px; 
+    height: 12px; 
+    background: #fff; 
+    border-radius: 50%; 
+    top: 50%; 
+    transform: translate(-50%,-50%) scale(0); 
+    transition: transform 0.1s; 
+    z-index: 2;
+}
+.progress-area:hover .progress-thumb { transform: translate(-50%,-50%) scale(1); }
+
+
+.buttons-row { display: flex; justify-content: space-between; align-items: center; }
+.left-group, .right-group { display: flex; align-items: center; gap: 10px; }
+
+/* Icon Colors */
+#btn-play .icon-play { fill: #f0f0f0; }
+#btn-play .icon-pause { fill: #d0d0d0; }
+#btn-prev, #btn-next { color: #bdbdbd; }
+#btn-pip { color: #909090; }
+#btn-subs { color: #808080; }
+#btn-stream { color: #787878; }
+#btn-fullscreen { color: #707070; }
+#btn-screenshot { color: #909090; }
+#btn-readme { color: #909090; }
+
+/* Frame Buttons */
+#btn-frame-prev, #btn-frame-next { color: #909090; }
+
+/* Volume Button Styles */
+#btn-mute { color: #a0a0a0; }
+#btn-mute.muted { color: #404040; } 
+
+/* SLIDING TEXTURE GLOBE */
+.globe-svg {
+    filter: grayscale(100%) brightness(1.2); 
+    opacity: 0.7;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+#btn-stream:hover .globe-svg { opacity: 1; filter: grayscale(100%) brightness(1.4); }
+.globe-ocean { fill: #1565c0; transition: fill 0.3s; }
+.globe-land { stroke: #66bb6a; transition: stroke 0.3s; }
+.icon-spin.globe-svg { filter: grayscale(0%) brightness(1) !important; opacity: 1; }
+@keyframes slide-map {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-24px); } 
+}
+.icon-spin .globe-map { animation: slide-map 4s linear infinite; }
+
+/* EQ Icon Animation */
+.eq-bar { transform-box: fill-box; transform-origin: bottom; animation: eq-bounce 0.8s infinite ease-in-out alternate; }
+.eq-bar-1 { animation-duration: 0.6s; }
+.eq-bar-2 { animation-duration: 0.8s; }
+.eq-bar-3 { animation-duration: 0.7s; }
+@keyframes eq-bounce {
+    0% { transform: scaleY(0.4); }
+    100% { transform: scaleY(1); }
+}
+
+/* Volume Slider */
+/* Note: iOS ignores programmatic volume changes - slider is visual-only on iOS */
+.volume-container { 
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+    width: 110px; 
+    margin-right: 10px; 
+    flex-shrink: 0; 
+}
+.volume-container input[type=range] { 
+    -webkit-appearance: none; 
+    width: 100%; 
+    background: transparent; 
+    cursor: pointer; 
+    height: 20px; 
+    display: flex; 
+    align-items: center;
+    /* Prevent iOS zoom on double-tap */
+    touch-action: manipulation;
+}
+.volume-container input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 5px; background: rgba(255,255,255,0.2); border-radius: 2.5px; border: none; }
+.volume-container input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 16px; width: 16px; border-radius: 50%; background: #cccccc; margin-top: -5.5px; box-shadow: 0 1px 3px rgba(0,0,0,0.6); border: 1px solid #888888; transition: transform 0.1s ease; }
+.volume-container input[type=range]:hover::-webkit-slider-thumb { transform: scale(1.15); background: #ffffff; }
+.volume-container input[type=range]::-moz-range-track { width: 100%; height: 5px; background: rgba(255,255,255,0.2); border-radius: 2.5px; border: none; }
+.volume-container input[type=range]::-moz-range-thumb { height: 16px; width: 16px; border-radius: 50%; background: #cccccc; border: 1px solid #888888; box-shadow: 0 1px 3px rgba(0,0,0,0.6); }
+
+/* Time Display */
+#time-display { 
+    font-size: 0.8rem; /* Decreased size */
+    margin-left: 10px;
+    color: #ccc;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    #player-stage { 
+        width: 100%; 
+        flex: none;
+        /* Prevent pull-to-refresh on mobile */
+        overscroll-behavior-y: contain;
+    }
+    #btn-toggle-playlist { display: none; }
+    .controls-wrapper { 
+        padding: 0 10px 15px 10px; 
+        bottom: 0; 
+        background: linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.9) 70%, rgba(0,0,0,0) 100%);
+        /* Safe area for notched phones */
+        padding-bottom: max(15px, env(safe-area-inset-bottom));
+    }
+    .buttons-row { flex-direction: column; gap: 12px; align-items: stretch; }
+    .left-group, .right-group { width: 100%; justify-content: space-between; }
+    .volume-container { width: 80px; }
+    #subtitle-overlay { bottom: 120px; padding: 0 10px; }
+    .subtitle-line { font-size: 1.1rem; }
+    
+    /* Larger touch targets for mobile buttons */
+    .icon-btn {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    /* Progress bar styling on mobile */
+    .progress-area {
+        height: 30px; /* Larger hit area */
+        margin: -10px 0;
+    }
+    
+    /* Ensure visible bars remain thin on mobile unless hovered/dragged */
+    .progress-bg, .progress-fill {
+        height: 3px; 
+    }
+}
+
+/* FIX: Placed at the very end to ensure it overrides all other styles */
+/* Uses !important to force hidden state and visibility hidden to stop mouse interactions */
+.controls-wrapper.fade-out { 
+    opacity: 0 !important; 
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* FIX: Aggressive cursor hiding for Fullscreen */
+#player-stage.no-cursor, 
+#player-stage.no-cursor * { 
+    cursor: none !important; 
+}

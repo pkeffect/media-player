@@ -1,0 +1,26 @@
+<!-- START OF FILE html/captions.html -->
+<!-- CAPTION SETTINGS MODAL -->
+<div id="caption-modal" class="modal-overlay">
+    <div class="modal-content" style="width: 350px;">
+        <div class="modal-header">
+            <h3>Caption Settings</h3>
+        </div>
+        <div class="modal-body">
+            <div class="setting-row">
+                <label for="cap-size">Font Size</label>
+                <input type="range" id="cap-size" min="0.8" max="3" step="0.1" value="1.5" aria-label="Font Size">
+            </div>
+            <div class="setting-row">
+                <label for="cap-color">Text Color</label>
+                <input type="color" id="cap-color" value="#ffffff" aria-label="Text Color">
+            </div>
+            <div class="setting-row">
+                <label for="cap-bg">Background</label>
+                <input type="range" id="cap-bg" min="0" max="1" step="0.1" value="0.6" aria-label="Background Opacity">
+            </div>
+        </div>
+        <div class="modal-actions">
+            <button id="btn-caption-close">Close</button>
+        </div>
+    </div>
+</div>
